@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pilots"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1"
+        android:background="@color/black">
+
+        <TableRow>
+            android:id="@+id/pilotsFirstEmptyRow"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/pilotsEmptyText0"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:layout_span="4"></TextView>
+        </TableRow>
+
+        <TableRow>
+            android:id="@+id/pilotsTableHeader"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/pilotsTableHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:text="2015 Driver Standings"
+                android:layout_span="4"
+                android:textColor="@color/gray"></TextView>
+        </TableRow>
+
+        <TableRow>
+            android:id="@+id/pilotsSecondEmptyRow"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal">
+            <TextView
+                android:id="@+id/pilotsEmptyText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:typeface="serif"
+                android:textSize="18dp"
+                android:gravity="center"
+                android:layout_span="4"></TextView>
+        </TableRow>
+
+    </TableLayout>
+</LinearLayout>
