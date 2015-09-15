@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
-import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -25,12 +24,9 @@ import java.util.Set;
 import java.util.TreeSet;
 
 public class StandingsFragment extends Fragment {
-    final PilotsStandingsPageParser pilotsLoader = new PilotsStandingsPageParser();
-    final TeamsStandingsPageParser teamsLoader = new TeamsStandingsPageParser();
     final String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
     final String pilotsUrl = "http://www.formula1.com/content/fom-website/en/championship/results/" + year + "-driver-standings.html";
     final String teamsUrl = "http://www.formula1.com/content/fom-website/en/championship/results/" + year + "-constructor-standings.html";
-
     Context context;
     View mainView;
 
@@ -42,10 +38,10 @@ public class StandingsFragment extends Fragment {
         int fragmentType = args.getInt("pageType");
         if (fragmentType == 0) {
             mainView = inflater.inflate(R.layout.pilots_standings_fragment, container, false);
-            pilotsLoader.execute(pilotsUrl);
+            new PilotsStandingsPageParser().execute(pilotsUrl);
         } else if (fragmentType == 1) {
             mainView = inflater.inflate(R.layout.teams_standings_fragment, container, false);
-            teamsLoader.execute(teamsUrl);
+            new TeamsStandingsPageParser().execute(teamsUrl);
         } else {
             showErrorDialog();
         }
