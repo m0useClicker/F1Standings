@@ -35,7 +35,7 @@ class StandingsPagerAdapter extends FragmentPagerAdapter {
     public CharSequence getPageTitle(int position) {
         switch (position) {
             case 0:
-                return "Driver Standings";
+                return "Drivers";
             case 1:
                 return "Teams";
         }
