@@ -39,7 +39,7 @@
                 android:typeface="serif"
                 android:textSize="18dp"
                 android:gravity="center"
-                android:text="2015 Driver Standings"
+                android:text="@string/driversTableHeader"
                 android:layout_span="5"
                 android:textColor="@color/gray"></TextView>
         </TableRow>

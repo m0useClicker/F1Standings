@@ -39,7 +39,7 @@
                 android:typeface="serif"
                 android:textSize="18dp"
                 android:gravity="center"
-                android:text="2015 Constructor Standings"
+                android:text="@string/teamsTableHeader"
                 android:layout_span="3"
                 android:textColor="@color/gray"></TextView>
         </TableRow>

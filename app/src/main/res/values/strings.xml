@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">F1 Standings</string>
     <color name="black">#000000</color>
     <color name="gray">#99FFFFFF</color>
+
+    <!--localization-->
+    <string name="app_name">F1 Standings</string>
+    <string name="driversTabText">Pilots</string>
+    <string name="teamsTabText">Teams</string>
+    <string name="driversTableHeader">2015 Driver Standings</string>
+    <string name="teamsTableHeader">2015 Constructor Standings</string>
 </resources>

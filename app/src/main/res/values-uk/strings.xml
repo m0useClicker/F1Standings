@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--localization-->
+    <string name="app_name">Турнірна таблиця Ф1</string>
+    <string name="teamsTableHeader">2015 Кубок конструкторів</string>
+    <string name="teamsTabText">Команди</string>
+    <string name="driversTabText">Пілоти</string>
+    <string name="driversTableHeader">2015 Кубок пілотів</string>
+</resources>
