@@ -10,7 +10,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -18,15 +20,16 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import java.io.IOException;
-import java.util.Calendar;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
 
 public class StandingsFragment extends Fragment {
-    final String year = Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+    final String year = "2015";
     final String pilotsUrl = "http://www.formula1.com/content/fom-website/en/championship/results/" + year + "-driver-standings.html";
     final String teamsUrl = "http://www.formula1.com/content/fom-website/en/championship/results/" + year + "-constructor-standings.html";
+    private Pilot[] pilotsData = new Pilot[]{};
+    private Team[] teamsData = new Team[]{};
     Context context;
     View mainView;
 
@@ -37,38 +40,16 @@ public class StandingsFragment extends Fragment {
         Bundle args = getArguments();
         int fragmentType = args.getInt("pageType");
         if (fragmentType == 0) {
-            mainView = inflater.inflate(R.layout.pilots_standings_fragment, container, false);
+            mainView = inflater.inflate(R.layout.pilots_stangings, container, false);
             new PilotsStandingsPageParser().execute(pilotsUrl);
         } else if (fragmentType == 1) {
-            mainView = inflater.inflate(R.layout.teams_standings_fragment, container, false);
+            mainView = inflater.inflate(R.layout.teams_standings, container, false);
             new TeamsStandingsPageParser().execute(teamsUrl);
         } else {
             showErrorDialog();
         }
 
         return mainView;
-    }
-
-    private void fillPilotsTable(Set<Pilot> pilots) {
-        TableLayout table = (TableLayout) mainView.findViewById(R.id.pilots);
-        table.setStretchAllColumns(true);
-        table.setShrinkAllColumns(true);
-
-        for (Pilot pilot : pilots) {
-            PilotTableRow pilotRow = new PilotTableRow(context, pilot.getPosition(), pilot.getName(), pilot.getNationality(), pilot.getTeam(), pilot.getPoints());
-            table.addView(pilotRow);
-        }
-    }
-
-    private void fillTeamsTable(Set<Team> teams){
-        TableLayout table = (TableLayout) mainView.findViewById(R.id.teams);
-        table.setStretchAllColumns(true);
-        table.setShrinkAllColumns(true);
-
-        for (Team team : teams) {
-            TeamTableRow teamRow = new TeamTableRow(context, team.getPosition(),team.getName(),team.getPoints());
-            table.addView(teamRow);
-        }
     }
 
     private void showErrorDialog() {
@@ -141,8 +122,11 @@ public class StandingsFragment extends Fragment {
         protected void onPostExecute(Boolean successfulExecution) {
             if (!successfulExecution)
                 showErrorDialog();
-            else
-                fillPilotsTable(pilots);
+            else{
+                pilotsData = pilots.toArray(new Pilot[pilots.size()]);
+                ListView listView = (ListView) mainView.findViewById(R.id.pilotsList);
+                listView.setAdapter(new PilotsArrayAdapter());
+            }
         }
     }
 
@@ -201,8 +185,69 @@ public class StandingsFragment extends Fragment {
         protected void onPostExecute(Boolean successfulExecution) {
             if (!successfulExecution)
                 showErrorDialog();
-            else
-                fillTeamsTable(teams);
+            else {
+                teamsData = teams.toArray(new Team[teams.size()]);
+                ListView listView = (ListView) mainView.findViewById(R.id.teamsList);
+                listView.setAdapter(new TeamsArrayAdapter());
+            }
+        }
+    }
+
+    class PilotsArrayAdapter extends ArrayAdapter<Pilot> {
+        public PilotsArrayAdapter() {
+            super(StandingsFragment.this.context, R.layout.pilot_row, pilotsData);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Pilot pilot = pilotsData[position];
+
+            if(convertView==null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.pilot_row, parent, false);
+            }
+
+            TextView positionView = (TextView) convertView.findViewById(R.id.pilotPosition);
+            positionView.setText(String.valueOf(pilot.getPosition()));
+
+            TextView nameView = (TextView) convertView.findViewById(R.id.pilotName);
+            nameView.setText(pilot.getName());
+
+            TextView nationality = (TextView) convertView.findViewById(R.id.pilotNationality);
+            nationality.setText(pilot.getNationality());
+
+            TextView team = (TextView)convertView.findViewById(R.id.pilotTeam);
+            team.setText(pilot.getTeam());
+
+            TextView pointsView = (TextView) convertView.findViewById(R.id.pilotPoints);
+            pointsView.setText(String.valueOf(pilot.getPoints()));
+
+            return convertView;
+        }
+    }
+
+    class TeamsArrayAdapter extends ArrayAdapter<Team>{
+        public TeamsArrayAdapter(){
+            super(StandingsFragment.this.context,R.layout.team_row,teamsData);
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            Team team = teamsData[position];
+
+            if(convertView==null){
+                convertView = LayoutInflater.from(getContext()).inflate(R.layout.team_row, parent, false);
+            }
+
+            TextView teamPosition = (TextView) convertView.findViewById(R.id.teamPosition);
+            teamPosition.setText(String.valueOf(team.getPosition()));
+
+            TextView name = (TextView) convertView.findViewById(R.id.teamName);
+            name.setText(team.getName());
+
+            TextView points = (TextView) convertView.findViewById(R.id.teamPoints);
+            points.setText(String.valueOf(team.getPoints()));
+
+            return convertView;
         }
     }
 }

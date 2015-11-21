@@ -7,8 +7,8 @@ android {
         applicationId 'm0useclicker.f1standings.two'
         minSdkVersion 14
         targetSdkVersion 21
-        versionCode 1
-        versionName "1.0"
+        versionName '1.0.1'
+        versionCode 2
     }
     buildTypes {
         release {
@@ -16,9 +16,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:21.0.3'
+    compile 'junit:junit:4.12'
 }
