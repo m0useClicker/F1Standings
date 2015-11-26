@@ -6,4 +6,13 @@
     <string name="teamsTabText">Команди</string>
     <string name="driversTabText">Пілоти</string>
     <string name="driversTableHeader">2015 Кубок пілотів</string>
+
+    <string name="errorTitle">Помилка</string>
+    <string name="unableToLoadDataMessage">Неможливо отримати дані.</string>
+
+    <string name="unableToConnectMessage">Інтернет з’єднання необхідне. Будь-ласка увімкніть мобільний інтренет або WiFi.</string>
+    <string name="unableToConnectTitle">Інтернет з’єднання необхідне</string>
+    <string name="cancelButtonText">Відміна</string>
+    <string name="wifiButtonText">Налаштування WiFi</string>
+    <string name="mobileDataButtonText">Налаштування мобільного інтренету</string>
 </resources>

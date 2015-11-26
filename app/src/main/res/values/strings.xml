@@ -8,4 +8,14 @@
     <string name="teamsTabText">Teams</string>
     <string name="driversTableHeader">2015 Driver Standings</string>
     <string name="teamsTableHeader">2015 Constructor Standings</string>
+
+    <string name="errorTitle">Error</string>
+    <string name="unableToLoadDataMessage">Unable to load data.</string>
+
+    <string name="unableToConnectMessage">Internet connection is required. Please turn on mobile network or Wi-Fi in Settings.</string>
+    <string name="unableToConnectTitle">Unable to connect</string>
+    <string name="cancelButtonText">Cancel</string>
+    <string name="wifiButtonText">WiFi Settings</string>
+    <string name="mobileDataButtonText">Mobile Network Settings</string>
+
 </resources>

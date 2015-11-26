@@ -43,10 +43,10 @@ public class MainActivity extends android.support.v4.app.FragmentActivity {
 
     protected void showNetworkRequiredDialog() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Internet connection is required. Please turn on mobile network or Wi-Fi in Settings.")
-                .setTitle("Unable to connect")
+        builder.setMessage(R.string.unableToConnectMessage)
+                .setTitle(R.string.unableToConnectTitle)
                 .setCancelable(false)
-                .setPositiveButton("Mobile Network Settings",
+                .setPositiveButton(R.string.mobileDataButtonText,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Intent i = new Intent(Settings.ACTION_WIRELESS_SETTINGS);
@@ -55,14 +55,14 @@ public class MainActivity extends android.support.v4.app.FragmentActivity {
                             }
                         }
                 )
-                .setNeutralButton("WiFi Settings", new DialogInterface.OnClickListener() {
+                .setNeutralButton(R.string.wifiButtonText, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent i = new Intent(Settings.ACTION_WIFI_SETTINGS);
                         startActivity(i);
                         setView();
                     }
                 })
-                .setNegativeButton("Cancel",
+                .setNegativeButton(R.string.cancelButtonText,
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 finish();

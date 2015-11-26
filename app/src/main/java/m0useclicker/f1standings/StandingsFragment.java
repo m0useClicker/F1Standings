@@ -54,8 +54,8 @@ public class StandingsFragment extends Fragment {
 
     private void showErrorDialog() {
         new AlertDialog.Builder(context)
-                .setTitle("Error")
-                .setMessage("Unable to load data.")
+                .setTitle(R.string.errorTitle)
+                .setMessage(R.string.unableToLoadDataMessage)
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                     }
