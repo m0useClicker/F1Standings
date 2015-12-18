@@ -1,23 +1,31 @@
 package m0useclicker.f1standings;
 
-import junit.framework.TestCase;
+import android.support.test.runner.AndroidJUnit4;
 
-public class TeamTest extends TestCase {
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
+
+@RunWith(AndroidJUnit4.class)
+public class TeamTest {
 
     private final int position = 1;
     private final String name = "nameHere";
     private final int points = 2;
     private final Team team = new Team(position, name, points);
 
-    public void testGetPosition() throws Exception {
+    @Test
+    public void getPosition() throws Exception {
         assertEquals(position, team.getPosition());
     }
 
-    public void testGetName() throws Exception {
+    @Test
+    public void getName() throws Exception {
         assertEquals(name, team.getName());
     }
 
-    public void testGetPoints() throws Exception {
+    @Test
+    public void getPoints() throws Exception {
         assertEquals(points, team.getPoints());
     }
 }

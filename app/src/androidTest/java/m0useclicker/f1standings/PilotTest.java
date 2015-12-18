@@ -1,8 +1,13 @@
 package m0useclicker.f1standings;
 
-import junit.framework.TestCase;
+import android.support.test.runner.AndroidJUnit4;
 
-public class PilotTest extends TestCase {
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import static org.junit.Assert.*;
+
+@RunWith(AndroidJUnit4.class)
+public class PilotTest {
     private final int position = 1;
     private final String name = "nameHere";
     private final String nationality = "nationalityHere";
@@ -10,23 +15,28 @@ public class PilotTest extends TestCase {
     private final int points = 2;
     private final Pilot pilot = new Pilot(position, name, nationality, team, points);
 
-    public void testGetPosition() throws Exception {
+    @Test
+    public void getPosition() throws Exception {
         assertEquals(position,pilot.getPosition());
     }
 
-    public void testGetName() throws Exception {
+    @Test
+    public void getName() throws Exception {
         assertEquals(name,pilot.getName());
     }
 
-    public void testGetNationality() throws Exception {
+    @Test
+    public void getNationality() throws Exception {
         assertEquals(nationality,pilot.getNationality());
     }
 
-    public void testGetTeam() throws Exception {
+    @Test
+    public void getTeam() throws Exception {
         assertEquals(team,pilot.getTeam());
     }
 
-    public void testGetPoints() throws Exception {
+    @Test
+    public void getPoints() throws Exception {
         assertEquals(points,pilot.getPoints());
     }
 }
