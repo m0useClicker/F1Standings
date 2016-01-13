@@ -4,11 +4,11 @@ android {
     compileSdkVersion 23
     buildToolsVersion "21.1.2"
     defaultConfig {
-        applicationId 'm0useclicker.f1standings.two'
+        applicationId 'm0useclicker.f1standings.three'
         minSdkVersion 14
         targetSdkVersion 23
         versionName '1.0.1'
-        versionCode 2
+        versionCode 3
 
         testApplicationId "m0useclicker.f1standings.two.test"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -24,10 +24,9 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'junit:junit:4.12'
-
     testCompile 'com.android.support:support-annotations:23.0.1'
     androidTestCompile 'com.android.support:support-annotations:23.0.1'
     androidTestCompile 'com.android.support.test:runner:0.4.1'
